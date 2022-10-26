@@ -1,0 +1,189 @@
+\documentclass{yorkThesis}
+\usepackage[pdftex]{graphicx}
+\usepackage{lscape}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+\usepackage{amsmath,amsfonts,amsthm} % Math 
+\usepackage{ amssymb }
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{tabularx,colortbl}
+\usepackage{multirow}
+\usepackage{accents}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{color, colortbl}
+\usepackage{xpatch}
+
+
+\makeatletter
+\def\ignorecitefornumbering#1{%
+	\begingroup
+	\@fileswfalse
+	#1%                     % do \cite comand
+	\endgroup
+}
+\makeatother
+
+\usepackage{setspace}
+
+\definecolor{Gray}{gray}{0.9}
+
+\algrenewcommand\algorithmicindent{1.2em}%
+
+\usepackage{appendix}
+
+\usepackage{tabularx,ragged2e}
+\usepackage{nicefrac}
+
+\interfootnotelinepenalty=10000
+
+
+\usepackage{mathtools}  % <-- added
+\usepackage{makecell}   % <-- added
+
+% remove the paragraph indenting and control spacing.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\singlespacing
+
+% define an acronym to be used in the thesis
+\newcommand{\acronym}{ToolName}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+% command to highlight text revisions.
+\newcommand{\revise}[1]{\textcolor{blue}{#1}}
+
+% new theorem environment
+\newtheorem{exmp}{Example}[chapter]
+\newtheorem{theorem}{Theorem}
+
+% new defintion environment
+\newtheorem{definition}{Definition}[chapter]
+
+\newcommand{\squishlist}{
+   \begin{list}{$\bullet$}
+    { \setlength{\itemsep}{2pt}    \setlength{\parsep}{0pt}
+      \setlength{\topsep}{5pt}     \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1.35em} \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newtheorem{example}{Example}[chapter]
+
+\newcommand{\squishend}{
+    \end{list}  }
+
+
+
+\makeatletter
+\newcommand\ackname{Acknowledgements}
+\newenvironment{acknowledgements}{
+	\titlepage
+	\null\vfil
+	\@beginparpenalty\@lowpenalty
+	\begin{center}%
+		\LARGE
+		\bfseries \ackname
+		\@endparpenalty\@M
+\end{center}}%
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+
+\makeatletter
+\newcommand\absname{Abstract}
+\newenvironment{abstract}{
+	\titlepage
+	\null\vfil
+	\@beginparpenalty\@lowpenalty
+	\begin{center}%
+		\LARGE
+		\bfseries \absname
+		\@endparpenalty\@M
+\end{center}}%
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+\makeatletter
+\newcommand\decname{Declaration}
+\newenvironment{declaration}{%
+	\titlepage
+%	\null\vfil
+	\@beginparpenalty\@lowpenalty
+	\begin{center}%
+		\LARGE
+		\bfseries \decname
+		\@endparpenalty\@M
+\end{center}}%
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+%fix overly large itemize spacing
+\usepackage{enumitem}
+\usepackage{lineno,hyperref}
+
+\makeatletter
+% do the same as notoccite on top of the redefinitions by hyperref
+\AtBeginDocument{%
+	\patchcmd{\@starttoc}{\begingroup}{\begingroup\@fileswfalse}{}{}%
+	\patchcmd{\@starttoc}{\if@filesw}{\endgroup\begingroup\if@filesw}{}{}%
+}
+\makeatother
+
+\begin{document}
+
+	\frontmatter
+\title{My amazing PhD}
+\author{PhD Candidate Name}
+\dept{Computer Science}
+\titlePage
+\input{sections/abstract.tex}
+
+\begin{spacing}{0}
+\tableofcontents
+\listoffigures
+\listoftables
+\end{spacing}
+
+\input{sections/dedication.tex}
+\input{sections/acknowledgement.tex}
+\input{sections/declaration.tex}
+
+\mainmatter
+
+% include if you want parts in your thesis
+%\part{Introduction and Background}
+\input{sections/introduction.tex}
+\input{sections/background.tex}
+
+%\part{Part Title 1}
+\input{sections/Contribution1.tex}
+\input{sections/Contribution2.tex}
+%\part{Part Title 2}
+\input{sections/Contribution3.tex}
+
+%\part{Conclusions and Further Work}
+\input{sections/conclusions.tex}
+\input{sections/future.tex}
+
+\begin{appendices}
+\input{sections/Appendix1.tex}
+\end{appendices}
+
+\bibliographystyle{ieeetr}
+\bibliography{thesisBib}
+
+\end{document}

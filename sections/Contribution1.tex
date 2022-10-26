@@ -1,0 +1,73 @@
+\chapter{First Contribution\label{chap:Contribution1}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis scelerisque lacus, eu rutrum neque faucibus sit amet. Nam sit amet porta nibh. Duis eu dolor eu justo commodo facilisis vitae ut risus. Cras iaculis, velit sagittis aliquet semper, neque augue convallis erat, faucibus dictum purus turpis id felis. In nibh orci, pulvinar vel aliquet in, consequat sed dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris rutrum, orci ut laoreet scelerisque, neque tellus ullamcorper dolor, vel luctus risus est eu nisi.
+
+Sed facilisis odio in ante ultricies, ac sagittis tortor facilisis. Nunc convallis ligula diam, aliquet fringilla diam mollis vitae. Proin nec ex egestas, pharetra mauris ut, malesuada velit. Morbi hendrerit, lacus eu mollis mattis, turpis tortor fringilla nisi, eget mollis nulla urna non enim. Suspendisse sed turpis ac lectus tincidunt laoreet. Nulla posuere, augue sit amet mattis ullamcorper, libero nisi aliquet massa, in ultricies risus enim vitae nulla. Quisque gravida dapibus facilisis. Praesent gravida accumsan finibus. Proin quis massa sed dui lacinia consequat. Vivamus venenatis ipsum id lobortis imperdiet. Sed pretium blandit ante nec ultrices. Phasellus consectetur erat quis fermentum scelerisque.
+
+Here is an example citation~\cite{OMNIref}. An example of a Figure is provided in~\ref{fig:ExampleFigure} and a table is shown in Table~\ref{tab:Example}. Finally an example algorithm in shown in Algorithm~\ref{alg:example}. When you revise text you can \revise{highlight it with the revise environment}. A theorem and proof environment are demonstrated in Theorem~\ref{th:example}.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/NoImage.pdf}
+	\caption{This is an example figure environment.\label{fig:ExampleFigure}}
+\end{figure}
+
+\begin{table}[t]
+	\sffamily
+	\caption{This is an example table environment\label{tab:Example}}
+	\centering
+	\begin{tabular}{llccc} \toprule
+		from & to & parameter & O$^{\#}$ & Point Estimate\\ \midrule
+		$s_1$ & $s_2$ & $\textsf{y}_1$ & 4050  & 0.4054\\
+		$s_1$ & $s_4$ & $\textsf{y}_2$ & 5938 & 0.5944\\
+		$s_1$ & $s_8$ & $\textsf{y}_3$ & 2 & 0.0002 \\ \midrule
+		$s_4$ & $s_{10}$ & $\textsf{x}_1$ & 5723 & 0.5622\\
+		$s_4$ & $s_9$ & $\textsf{x}_2$ & 4 & 0.0004\\
+		$s_7$ & $s_{10}$ & $\textsf{k}_2$ & 6 & 0.0006\\ \bottomrule
+	\end{tabular}
+\end{table}
+
+
+
+\begin{algorithm}[t]
+	\caption{Holding-time modelling with parameters:\\ \hspace*{3mm}$\bullet$ $\mathit{MinC}$ --- minimum number of PHD clusters\\ \hspace*{3mm}$\bullet$ $\mathit{MaxC}$ --- maximum number of PHD clusters\\ \hspace*{3mm}$\bullet$ $\mathit{MaxP}$ --- maximum number of cluster phases\\ \hspace*{3mm}$\bullet$ $\mathit{FittingAlg}$ --- basic PHD fitting algorithm\\ \hspace*{3mm}$\bullet$ $\mathit{MaxSteps}$ --- maximum steps without improvement \label{alg:example}}
+	
+	\begin{algorithmic}[1]
+		\Function{$\!\,$HoldingTimeModeling}{$\alpha,\tau'_{i1},\tau'_{i2},\ldots,\tau'_{in_i}\!$}
+		\State $\mathit{sample}\gets (\tau'_{i1},\tau'_{i2},\ldots,\tau'_{in_i})$
+		\State $\mathit{minErr}=\infty$
+		\While {$c\leq \mathit{MaxC} \wedge \mathit{steps} \leq \mathit{MaxSteps}$}
+		\State $\mathit{phd} \gets \textsc{CBFitting}(\mathit{sample}, c, \mathit{FittingAlg}, \mathit{MaxP})$
+		\If {$\mathit{improvement}\geq\alpha$}	   
+		\State $\mathit{improvement} \gets 0$
+		\Else
+		\State $\mathit{steps} \gets \mathit{steps}+1$
+		\EndIf
+		\State $c \gets c+1$
+		\EndWhile
+		\State \Return $\mathit{value}$
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+
+\begin{theorem}
+	\label{th:example}
+	Given a equation
+	\begin{equation}
+		\label{eq:th1}
+		x = a
+	\end{equation}
+	for some values ...
+	\begin{itemize}
+		\item[(i)] First thing;
+		\item[(ii)] Second thing.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	To prove (i), we note ...
+	For part (ii), we ...
+\end{proof}
